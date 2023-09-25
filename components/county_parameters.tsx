@@ -1,5 +1,4 @@
 import { County, unit_system_type } from "@/lib/model";
-import { round } from "@/lib/units";
 import {
   Card,
   CardHeader,
@@ -11,8 +10,6 @@ import {
 } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 import StyledTooltip from "../components/styled_tooltip";
-import { InformationCircleIcon } from "@heroicons/react/24/outline";
-import { Info } from "vega";
 
 const stateAbbreviationsToNames = {
   AL: "Alabama",
