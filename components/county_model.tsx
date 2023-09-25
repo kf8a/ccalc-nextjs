@@ -66,9 +66,9 @@ export default function CountyModel(props: {
       const index = draft.findIndex((scenario) => scenario.id === scenario_id);
       const current_scenario = draft[index];
       const current_rotation = current_scenario.rotations[rotation];
-      // @ts-ignore
+      {// @ts-ignore}
       current_rotation.crop_name = value.currentKey;
-      // @ts-ignore
+      {// @ts-ignore}
       current_rotation.crop_yield = props.default_yields[value.currentKey] || 0;
     });
   }
@@ -96,7 +96,7 @@ export default function CountyModel(props: {
       const index = draft.findIndex((scenario) => scenario.id === scenario_id);
       const current_scenario = draft[index];
       const current_rotation = current_scenario.rotations[rotation];
-      // @ts-ignore
+      {// @ts-ignore}
       current_rotation.tillage = value.currentKey;
     });
   }

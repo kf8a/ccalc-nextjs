@@ -64,7 +64,7 @@ export default function ResultTable(props: {
           <TableColumn>Total</TableColumn>
         </TableHeader>
         <TableBody>
-          // @ts-ignore
+          {// @ts-ignore}
           {rows.map((item) => (
             <TableRow key={item.id}>
               <TableCell>{item.id}</TableCell>
