@@ -7,7 +7,7 @@ export function CropSelect(props: {
   rotation: number;
   value: string;
 }) {
-  const crops = ["corn", "soybean", "wheat", "other", "silage", "switchgrass"];
+  const crops = ["corn", "soybean", "wheat", "oats", "silage", "switchgrass"];
 
   function updater(key: Selection) {
     props.updater(props.rotation, key);
