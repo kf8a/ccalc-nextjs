@@ -10,6 +10,7 @@ import {
   Button,
   Tooltip,
 } from "@nextui-org/react";
+import { PressEvent } from "@react-types/shared";
 import { CropSelect, TillageSelect, RotationInput } from "./select_boxes";
 import {
   scenario_info,
@@ -18,6 +19,7 @@ import {
   rotation_info,
 } from "@/lib/model";
 import StyledTooltip from "./styled_tooltip";
+import { get } from "http";
 
 const table_columns = [
   { key: "year", label: "Year" },
@@ -53,15 +55,29 @@ export default function RotationTable(props: {
     );
   }
 
+  function getCropName(item: rotation_info) {
+    return item.crop_name;
+  }
+
+  function getTillage(item: rotation_info) {
+    return item.tillage;
+  }
+
+  function getNitrogen(item: rotation_info) {
+    return item.nitrogen;
+  }
+
+  function getCropYield(item: rotation_info) {
+    return item.crop_yield;
+  }
+
   const renderCell = useCallback(
     (item: rotation_info, columnKey: string, index: number) => {
-      const cellValue = item[columnKey];
-
       switch (columnKey) {
         case "crop_name":
           return (
             <CropSelect
-              value={cellValue}
+              value={getCropName(item)}
               rotation={index}
               updater={props.crop_name_updater}
             />
@@ -69,7 +85,7 @@ export default function RotationTable(props: {
         case "tillage":
           return (
             <TillageSelect
-              value={cellValue}
+              value={getTillage(item)}
               rotation={index}
               updater={props.tillage_updater}
             />
@@ -77,7 +93,7 @@ export default function RotationTable(props: {
         case "crop_yield":
           return (
             <RotationInput
-              value={cellValue}
+              value={getCropYield(item).toString()}
               rotation={index}
               unit_system={props.unit_system}
               updater={props.crop_yield_updater}
@@ -86,14 +102,14 @@ export default function RotationTable(props: {
         case "nitrogen":
           return (
             <RotationInput
-              value={cellValue}
+              value={getNitrogen(item).toString()}
               rotation={index}
               unit_system={props.unit_system}
               updater={props.nitrogen_updater}
             />
           );
         default:
-          return cellValue;
+          return item.year;
       }
     },
     []

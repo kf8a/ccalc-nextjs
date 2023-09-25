@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { StrictMode } from "react";
 
 import Database from "better-sqlite3";
@@ -46,7 +45,7 @@ const db = new Database("michigan.sqlite3");
 export async function generateStaticParams(): Promise<CountyData[]> {
   const rows = db
     .prepare(
-      "SELECT distinct state as state, county as county_name FROM us_county_yields where state is not null and county is not null"
+      "SELECT distinct state as state, name as county_name FROM counties where state is not null and name is not null"
     )
     .all();
 
@@ -68,8 +67,8 @@ export default function Page({
   const county_name = params.county_name;
 
   const current_county: County = db
-    .prepare("Select * from counties where state = ? and name = ?")
-    .get(state, county_name) as County;
+    .prepare("Select * from counties where state = ? and name like ?")
+    .get(state, `${decodeURI(county_name)}%`) as County;
 
   current_county.c_zero = current_county.c_zero / 2;
   current_county.bulk_density = round(current_county.bulk_density, 1);

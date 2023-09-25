@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { results_type, unit_system_type } from "@/lib/model";
 import { round, display_in_unit_system, display_unit } from "@/lib/units";
 import {
@@ -64,7 +66,6 @@ export default function ResultTable(props: {
           <TableColumn>Total</TableColumn>
         </TableHeader>
         <TableBody>
-          {// @ts-ignore}
           {rows.map((item) => (
             <TableRow key={item.id}>
               <TableCell>{item.id}</TableCell>

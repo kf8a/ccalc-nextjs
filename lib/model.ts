@@ -18,11 +18,10 @@ export type crop =
   | "oats"
   | "alfalfa"
   | "silage"
-  | "switchgrass"
-  | "all";
+  | "switchgrass";
 
 export type unit_system_type = "imperial" | "metric";
-export type tillage = "conventional" | "reduced" | "no-till" | "all";
+export type tillage = "conventional" | "reduced" | "no-till";
 
 export type rotation_info = {
   year: number;

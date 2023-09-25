@@ -1,3 +1,4 @@
+import { unit_system_type } from "@/lib/model";
 import RotationTable from "./rotation_table";
 
 export default function Scenario(props: {
@@ -10,7 +11,7 @@ export default function Scenario(props: {
   add_rotation: any;
   delete_rotation: any;
   scenario: any;
-  unit_system: string;
+  unit_system: unit_system_type;
 }) {
   function updateCropName(rotation: number, key: string) {
     props.crop_name_updater(props.scenario.id, rotation, key);
