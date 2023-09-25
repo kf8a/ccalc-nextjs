@@ -1,0 +1,11 @@
+- [x] Delete year
+- [x] add scenario
+- [x] delete scenario
+- [x] graphs
+- [x] test socrates
+- [x] in the imperial unit system set the units for forages to tons/acre
+- [x] load default yields
+- [x] allow edits on county info
+- [x] finalize layout
+- [x] add titles for new scenarios
+- [x] add intro page
