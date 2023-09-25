@@ -119,6 +119,7 @@ export default function CountyModel(props: {
   function addRotation(scenario_id: number) {
     setScenarios((draft) => {
       const index = draft.findIndex((scenario) => scenario.id === scenario_id);
+      console.log(index);
       const current_scenario = draft[index];
       current_scenario.rotations.push({
         year: current_scenario.rotations.length,

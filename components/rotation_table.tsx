@@ -44,7 +44,7 @@ export default function RotationTable(props: {
   const rows = props.scenario.rotations;
 
   function addRotation(e: PressEvent) {
-    props.add_rotation(props.scenario);
+    props.add_rotation(props.scenario.id);
   }
 
   function add_tooltip(name: string, content: string) {
