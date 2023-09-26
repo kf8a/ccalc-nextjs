@@ -1,7 +1,5 @@
 "use strict";
 import React, { SVGProps } from "react";
-import * as d3 from "d3";
-import { geoEquirectangular, geoPath } from "d3-geo";
 import MapComponent from "@/components/map";
 
 export default function Home() {
