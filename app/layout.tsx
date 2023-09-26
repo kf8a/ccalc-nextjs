@@ -77,7 +77,7 @@ export default function RootLayout({
               </a>
             </span>
           </div>
-          <div className="flex flex-row items-center justify-center w-full h-24 text-white bg-[#18453B]">
+          <div className="flex flex-row items-center justify-center w-full h-12 text-white bg-[#18453B]">
             @2023 Michigan State University Board of Trustees
           </div>
         </footer>

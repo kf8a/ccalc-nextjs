@@ -3,13 +3,21 @@ import { useImmer } from "use-immer";
 import { useState } from "react";
 import { data_info, tillage, crop } from "@/lib/model";
 import { stringToUnitSystemType } from "@/lib/units";
+import {
+  Modal,
+  ModalContent,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Button,
+  useDisclosure,
+} from "@nextui-org/react";
 
 import Scenario from "./scenario";
 import { RadioGroup, Radio } from "@nextui-org/react";
 import { socrates } from "@/lib/socrates";
 import CountyParameters from "./county_parameters";
 import ResultTable from "./result_table";
-import { Button } from "@nextui-org/react";
 import {
   scenario_to_metric,
   scenario_to_imperial,
@@ -266,23 +274,118 @@ export default function CountyModel(props: {
     return color;
   }
 
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
   let colors = scenarios.map((scenario) => scenario.color);
   let units = stringToUnitSystemType(unit_system);
 
   return (
     <div>
       <section className="p-4">
-        <RadioGroup
-          className="p-2"
-          label="Select your unit system"
-          color="secondary"
-          orientation="horizontal"
-          onValueChange={handle_unit_system_change}
-          defaultValue={unit_system}
-        >
-          <Radio value="imperial">imperial</Radio>
-          <Radio value="metric">metric</Radio>
-        </RadioGroup>
+        <div className="flex flex-row-reverse gap-5 ">
+          <>
+            <Button onPress={onOpen} color="secondary">
+              Instructions
+            </Button>
+            <Modal isOpen={isOpen} size="3xl" onOpenChange={onOpenChange}>
+              <ModalContent className="w-full">
+                {(onClose) => (
+                  <>
+                    <ModalHeader className="flex flex-col gap-1 font-capital">
+                      Instructions
+                    </ModalHeader>
+                    <ModalBody>
+                      <h2 className="font-bold">
+                        Calculate the greenhouse gas impact of different farming
+                        systems
+                      </h2>
+                      <p className="text-sm">
+                        The base scenario is a two year corn-soybean rotation.
+                        The default settings for that rotation and for the
+                        environmental conditions are averages for the county you
+                        chose from the clickable map. If desired, you may adjust
+                        some or all of the default settings to more accurately
+                        represent the cropping system and area you are
+                        interested in.
+                      </p>
+                      <ul className="list-disc px-16 text-sm">
+                        <li>
+                          Chose to have the data presented in either Metric or
+                          Imperial units by clicking the appropriate button at
+                          the bottom of the page.
+                        </li>
+                        <li>
+                          Adjust some or all of the default baseline scenario
+                          settings for:
+                          <ul className="list-disc px-16">
+                            <li>Crop (use drop down arrows)</li>
+                            <li>Yield (enter new number)</li>
+                            <li>Tillage (use drop down arrow)</li>
+                            <li>Fertilizer (enter new number)</li>
+                            <li>Environmental Conditions (enter new data)</li>
+                          </ul>
+                        </li>
+                        <li>
+                          If needed, "Remove" or "Add another year to the
+                          rotation" by clicking the appropriate buttons and then
+                          changing the default settings as desired.
+                        </li>
+                        <li>
+                          The greenhouse gas cost is represented in a graph (top
+                          of page) and in a table (right side of the page).
+                          Click on the "i" to learn about what the data means.
+                        </li>
+                      </ul>
+                      <h2 className="font-bold">
+                        How do other cropping systems compare to this cropland?
+                      </h2>
+                      <p className="text-sm">
+                        The graph you created above is the "base scenario". To
+                        compare one or more cropping systems to the "base
+                        scenario":
+                      </p>
+                      <ul className="list-disc px-16 text-sm">
+                        <li>
+                          Click "Add scenario" and a new scenario will appear
+                          above the "base scenario".
+                        </li>
+                        <li>
+                          Adjust the default settings and delete/add years to
+                          the rotation as desired.
+                        </li>
+                      </ul>
+                      <p className="text-sm">
+                        The number next to each graph is the greenhouse gas cost
+                        difference between that scenario and the "base
+                        scenario". A green (negative) number means that the new
+                        cropping scenario is better for the environment than the
+                        base scenario: it has a lower greenhouse gas cost. A red
+                        (positive) number means the new cropping scenario has a
+                        higher greenhouse gas cost (worse for the environment)
+                      </p>
+                    </ModalBody>
+                    <ModalFooter>
+                      <Button color="primary" onPress={onClose}>
+                        Close
+                      </Button>
+                    </ModalFooter>
+                  </>
+                )}
+              </ModalContent>
+            </Modal>
+          </>
+          <RadioGroup
+            className="p-2"
+            label="Select your unit system"
+            color="secondary"
+            orientation="horizontal"
+            onValueChange={handle_unit_system_change}
+            defaultValue={unit_system}
+          >
+            <Radio value="imperial">imperial</Radio>
+            <Radio value="metric">metric</Radio>
+          </RadioGroup>
+        </div>
         <div className="flex flex-row flex-wrap">
           <div>
             <CountyParameters
