@@ -19,7 +19,7 @@ import {
   rotation_info,
 } from "@/lib/model";
 import StyledTooltip from "./styled_tooltip";
-import { get } from "http";
+import { TrashIcon } from "@heroicons/react/24/outline";
 
 const table_columns = [
   { key: "year", label: "Year" },
@@ -32,6 +32,7 @@ const table_columns = [
 const tillage = ["conventional", "reduced", "no-till"];
 
 export default function RotationTable(props: {
+  className: string;
   scenario: scenario_info;
   crop_name_updater: any;
   crop_yield_updater: any;
@@ -135,7 +136,7 @@ export default function RotationTable(props: {
   const fertilizer_units = props.unit_system === "imperial" ? "lb/ac" : "kg/ha";
 
   return (
-    <div className="mt-5">
+    <div className={props.className}>
       <h4 className="text-lg">{`Crop Rotation (${props.scenario.title})`}</h4>
       <Table aria-label="rotations table">
         <TableHeader>
@@ -185,7 +186,7 @@ export default function RotationTable(props: {
                   }
                   color="danger"
                 >
-                  Delete
+                  <TrashIcon className="w-4 h-4" />
                 </Button>
               </TableCell>
             </TableRow>

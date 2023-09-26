@@ -61,7 +61,7 @@ export default function CountyModel(props: {
       county,
       stringToUnitSystemType(unit_system)
     );
-    let result = socrates(current_rotations, current_county, 1);
+    let result = socrates(current_rotations, current_county, scenario.title, 1);
     return result;
   });
 
@@ -404,8 +404,9 @@ export default function CountyModel(props: {
         </div>
         {scenarios.map((scenario, index) => {
           return (
-            <div className="flex flex-wrap gap-4" key={`scenario-${index}`}>
+            <div className="flex flex-wrap gap-2" key={`scenario-${index}`}>
               <Scenario
+                className="mt-4"
                 state={props.my_state}
                 county_name={props.county_name}
                 scenario={scenario}
@@ -417,7 +418,10 @@ export default function CountyModel(props: {
                 add_rotation={addRotation}
                 delete_rotation={delete_rotation}
               />
-              <ResultTable results={results[index]} unit_system={units} />
+              <ResultTable
+                results={results[index].results}
+                unit_system={units}
+              />
             </div>
           );
         })}

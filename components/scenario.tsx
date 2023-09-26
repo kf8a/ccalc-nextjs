@@ -2,6 +2,7 @@ import { unit_system_type } from "@/lib/model";
 import RotationTable from "./rotation_table";
 
 export default function Scenario(props: {
+  className: string;
   state: string;
   county_name: string;
   crop_name_updater: any;
@@ -31,6 +32,7 @@ export default function Scenario(props: {
 
   return (
     <RotationTable
+      className={props.className}
       scenario={props.scenario}
       crop_name_updater={updateCropName}
       crop_yield_updater={updateCropYield}

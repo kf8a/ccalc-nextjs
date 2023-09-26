@@ -1,4 +1,11 @@
-import { County, rotation_info, results_type, factors_type } from "./model.ts";
+import { title } from "process";
+import {
+  County,
+  rotation_info,
+  results_type,
+  scenario_result_type,
+  factors_type,
+} from "./model.ts";
 
 class Pool {
   labile_microbial_biomass: number;
@@ -203,9 +210,10 @@ function find_tillage(tillage_name: string) {
 export function socrates(
   rotations: Array<rotation_info>,
   county: County,
+  title: string,
   tier: 1 | 2
-): Array<results_type> {
-  const results: Array<results_type> = [];
+): scenario_result_type {
+  const results: scenario_result_type = { title: title, results: [] };
   const MICROBIAL_FRACTION = 0.05;
   const DEPTH_LAYER_IN_CM = 10;
   const PROPORTION_OF_LIGHT_FRACTION = 0.05;
@@ -466,7 +474,7 @@ export function socrates(
     // save last_organic_carbon_percentage
     last_organic_carbon_percentage = result.organic_carbon_percentage;
 
-    results.push(result);
+    results.results.push(result);
   }
   return results;
 }

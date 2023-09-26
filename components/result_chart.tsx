@@ -32,7 +32,7 @@ const keys = [
 ];
 
 function convertArray(
-  inputArray: any[][],
+  inputArray: scenario_result_type[],
   unit_system: unit_system_type
 ): any[] {
   const resultArray: any[] = [];
@@ -45,10 +45,10 @@ function convertArray(
     const newObj: any = { name: key["label"] };
 
     for (let i = 0; i < inputArray.length; i++) {
-      newObj[`scenario_${i}`] = round(
+      newObj[inputArray[i].title] = round(
         display_in_unit_system(
-          inputArray[i].reduce((a, b) => a + b[key["name"]], 0) /
-            inputArray[i].length,
+          inputArray[i].results.reduce((a, b) => a + b[key["name"]], 0) /
+            inputArray[i].results.length,
           unit_system
         ),
         2
@@ -72,12 +72,16 @@ function getRandomColor() {
 
 // const keys = ["rotation_0", "rotation_1"];
 export default function ResultChart(props: {
-  results: results_type[][];
+  results: scenario_result_type[];
   unit_system: unit_system_type;
   colors: string[];
 }) {
-  let key_values = props.results.map((result, index) => `scenario_${index}`);
+  let key_values = props.results.map((scenario) => scenario.title);
   let unit_system = stringToUnitSystemType(props.unit_system);
+  let data = convertArray(props.results, unit_system);
+  console.log(props.results);
+  console.log(data);
+
   return (
     <div className="p-8">
       <h4>Annual Average CO2 costs</h4>

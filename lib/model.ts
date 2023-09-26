@@ -54,7 +54,6 @@ export type factors_type = {
 };
 
 export type scenario_result_type = {
-  id: number;
   title: string;
   results: Array<results_type>;
 };
