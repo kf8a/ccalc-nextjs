@@ -91,6 +91,10 @@ export default function Page({
 
   const county_yields = normalize_yields(raw_yields);
 
+  // TODO: set default yields
+  current_model.scenarios[0].rotations[0].crop_yield = county_yields.corn;
+  current_model.scenarios[0].rotations[1].crop_yield = county_yields.soybean;
+
   return (
     <StrictMode>
       <CountyModel
