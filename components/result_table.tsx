@@ -93,7 +93,7 @@ export default function ResultTable(props: {
                   props.unit_system
                 )}
               </TableCell>
-              <TableCell>
+              <TableCell className="font-bold">
                 {display_in_unit_system(
                   item.soil_co2_estimate +
                     item.n2o_n_estimate_percentage +
@@ -107,7 +107,7 @@ export default function ResultTable(props: {
           ;
           <TableRow>
             <TableCell className="font-bold">Annual Average</TableCell>
-            <TableCell>
+            <TableCell className="font-bold">
               {display_in_unit_system(
                 rows.reduce((a, b) => a + b.soil_co2_estimate, 0) / rows.length,
                 props.unit_system
