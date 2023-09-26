@@ -5,7 +5,7 @@ import { data_info, tillage, crop } from "@/lib/model";
 import { stringToUnitSystemType } from "@/lib/units";
 
 import Scenario from "./scenario";
-import { SelectItem, RadioGroup, Radio } from "@nextui-org/react";
+import { RadioGroup, Radio } from "@nextui-org/react";
 import { socrates } from "@/lib/socrates";
 import CountyParameters from "./county_parameters";
 import ResultTable from "./result_table";
@@ -64,6 +64,7 @@ export default function CountyModel(props: {
   ) {
     setScenarios((draft) => {
       const index = draft.findIndex((scenario) => scenario.id === scenario_id);
+      console.log(index);
       const current_scenario = draft[index];
       const current_rotation = current_scenario.rotations[rotation];
       // @ts-ignore
@@ -119,7 +120,6 @@ export default function CountyModel(props: {
   function addRotation(scenario_id: number) {
     setScenarios((draft) => {
       const index = draft.findIndex((scenario) => scenario.id === scenario_id);
-      console.log(index);
       const current_scenario = draft[index];
       current_scenario.rotations.push({
         year: current_scenario.rotations.length,
