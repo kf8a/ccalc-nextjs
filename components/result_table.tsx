@@ -106,34 +106,34 @@ export default function ResultTable(props: {
           ))}
           ;
           <TableRow>
-            <TableCell>Annual Average</TableCell>
+            <TableCell className="font-bold">Annual Average</TableCell>
             <TableCell>
               {display_in_unit_system(
                 rows.reduce((a, b) => a + b.soil_co2_estimate, 0) / rows.length,
                 props.unit_system
               )}
             </TableCell>
-            <TableCell>
+            <TableCell className="font-bold">
               {display_in_unit_system(
                 rows.reduce((a, b) => a + b.fertilizer_co2_estimate, 0) /
                   rows.length,
                 props.unit_system
               )}
             </TableCell>
-            <TableCell>
+            <TableCell className="font-bold">
               {display_in_unit_system(
                 rows.reduce((a, b) => a + b.fuel_co2_estimate, 0) / rows.length,
                 props.unit_system
               )}
             </TableCell>
-            <TableCell>
+            <TableCell className="font-bold">
               {display_in_unit_system(
                 rows.reduce((a, b) => a + b.fertilizer_production, 0) /
                   rows.length,
                 props.unit_system
               )}
             </TableCell>
-            <TableCell>
+            <TableCell className="font-bold">
               {display_in_unit_system(
                 rows.reduce(
                   (a, b) =>

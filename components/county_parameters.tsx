@@ -89,8 +89,8 @@ export default function CountyParameters(props: {
     <Card className="m-4 max-w-[600px]">
       <CardHeader className="flex gap-3">
         <div className="flex flex-col">
-          <p className="text-md">
-            {props.county.name} {props.county.state}
+          <p className="text-md font-bold">
+            {props.county.name} County, {props.county.state}
           </p>
         </div>
       </CardHeader>

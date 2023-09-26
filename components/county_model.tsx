@@ -246,10 +246,13 @@ export default function CountyModel(props: {
 
   function delete_rotation(scenario_id: number, rotation: number) {
     setScenarios((draft) => {
-      const current_scenario = draft[scenario_id];
+      let index = draft.findIndex((scenario) => scenario.id === scenario_id);
+      const current_scenario = draft[index];
       current_scenario.rotations.splice(rotation, 1);
+      console.log("scenario", draft.length);
+      console.log("rotations", current_scenario.rotations.length);
       if (current_scenario.rotations.length === 0) {
-        draft.splice(scenario_id, 1);
+        draft.splice(index, 1);
       }
     });
   }
