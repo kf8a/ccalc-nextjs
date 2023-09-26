@@ -12,7 +12,7 @@ const MapComponent = () => {
     // Create an SVG container for the map
     const svg = d3
       .select("#mapContainer")
-      .append("svg")
+      .select("svg")
       .attr("width", width)
       .attr("height", height);
 
@@ -52,7 +52,11 @@ const MapComponent = () => {
     });
   }, []);
 
-  return <div id="mapContainer"></div>;
+  return (
+    <div id="mapContainer">
+      <svg></svg>
+    </div>
+  );
 };
 
 export default MapComponent;
