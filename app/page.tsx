@@ -1,5 +1,5 @@
 "use strict";
-import React, { SVGProps } from "react";
+import React from "react";
 import MapComponent from "@/components/map";
 
 export default function Home() {
