@@ -26,7 +26,7 @@ export default function Credits(props: any) {
         systems. Journal of Natural Resources and Life Sciences Education
         39:125-131
       </p>
-      <p class="py-4">
+      <p className="py-4">
         <Link className="underline" href="/">
           Back
         </Link>
