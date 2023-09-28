@@ -136,7 +136,7 @@ export default function RotationTable(props: {
   const fertilizer_units = props.unit_system === "imperial" ? "lb/ac" : "kg/ha";
 
   return (
-    <div className="">
+    <div className="p-2 dark:bg-slate-900 dark:text-white bg-white text-slate-800 rounded-xl">
       <h4 className="text-lg">{`${props.scenario.title} (Crop Rotation)`}</h4>
       <Table aria-label="rotations table">
         <TableHeader>

@@ -27,7 +27,7 @@ export default function ResultTable(props: {
 }) {
   const rows = props.results;
   return (
-    <div>
+    <div className="dark:bg-slate-900 dark:text-white bg-white text-slate-800 rounded-xl">
       <h2 className="text-lg p-2">
         <StyledTooltip
           label={`Greenhouse gas costs CO2 equivalents ${display_unit(

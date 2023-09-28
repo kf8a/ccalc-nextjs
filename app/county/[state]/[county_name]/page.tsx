@@ -4,6 +4,7 @@ import Database from "better-sqlite3";
 import CountyModel from "@/components/county_model";
 import { initial_model, County } from "@/lib/model";
 import { mm_to_inch, c_to_f, round } from "@/lib/units";
+import { NextUIProvider } from "@nextui-org/react";
 
 interface CountyData {
   state: string;

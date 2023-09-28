@@ -15,7 +15,7 @@ export function CropSelect(props: {
 
   return (
     <Select
-      className="w-32"
+      className="w-32 bg-slate-900 text-white"
       aria-label="Crop Name"
       defaultSelectedKeys={[props.value]}
       onSelectionChange={updater}

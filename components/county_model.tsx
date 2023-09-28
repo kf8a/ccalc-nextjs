@@ -19,6 +19,7 @@ import {
   ModalFooter,
   Button,
   useDisclosure,
+  NextUIProvider,
 } from "@nextui-org/react";
 
 import { RadioGroup, Radio } from "@nextui-org/react";
@@ -253,15 +254,6 @@ export default function CountyModel(props: {
       new_scenario.id = nanoid();
       new_scenario.color = getRandomColor();
 
-      // let new_scenario: scenario_info = {
-      //   title: draft[0].title,
-      //   id: draft.length,
-      //   color: getRandomColor(),
-      //   rotations: rotations,
-      // };
-
-      // draft[0].title = "Scenario " + draft.length;
-
       draft.unshift(new_scenario);
     });
   }
@@ -399,172 +391,183 @@ export default function CountyModel(props: {
   let units = stringToUnitSystemType(unit_system);
 
   return (
-    <div>
-      <section className="p-4">
-        <div className="flex flex-row-reverse gap-5 ">
-          <div className="mt-5 px-8">
-            <Button onPress={onOpen} color="success">
-              Instructions
-            </Button>
-            <Modal isOpen={isOpen} size="3xl" onOpenChange={onOpenChange}>
-              <ModalContent className="w-full">
-                {(onClose) => (
-                  <>
-                    <ModalHeader className="flex flex-col gap-1 font-capital">
-                      Instructions
-                    </ModalHeader>
-                    <ModalBody>
-                      <h2 className="font-bold">
-                        Calculate the greenhouse gas impact of different farming
-                        systems
-                      </h2>
-                      <p className="text-sm">
-                        The base scenario is a two year corn-soybean rotation.
-                        The default settings for that rotation and for the
-                        environmental conditions are averages for the county you
-                        chose from the clickable map. If desired, you may adjust
-                        some or all of the default settings to more accurately
-                        represent the cropping system and area you are
-                        interested in.
-                      </p>
-                      <ul className="list-disc px-16 text-sm">
-                        <li>
-                          Chose to have the data presented in either Metric or
-                          Imperial units by clicking the appropriate button at
-                          the bottom of the page.
-                        </li>
-                        <li>
-                          Adjust some or all of the default baseline scenario
-                          settings for:
-                          <ul className="list-disc px-16">
-                            <li>Crop (use drop down arrows)</li>
-                            <li>Yield (enter new number)</li>
-                            <li>Tillage (use drop down arrow)</li>
-                            <li>Fertilizer (enter new number)</li>
-                            <li>Environmental Conditions (enter new data)</li>
+    <div className="">
+      <NextUIProvider>
+        <div className="dark:bg-slate-900 dark:text-white bg-white text-slate-900">
+          <section className="p-4">
+            <div className="flex flex-row-reverse gap-5 dark:bg-slate-900 dark:text-white bg-white text-slate-900">
+              <div className="mt-5 px-8">
+                <Button onPress={onOpen} color="success">
+                  Instructions
+                </Button>
+                <Modal isOpen={isOpen} size="3xl" onOpenChange={onOpenChange}>
+                  <ModalContent className="w-full">
+                    {(onClose) => (
+                      <>
+                        <ModalHeader className="flex flex-col gap-1 font-capital">
+                          Instructions
+                        </ModalHeader>
+                        <ModalBody>
+                          <h2 className="font-bold">
+                            Calculate the greenhouse gas impact of different
+                            farming systems
+                          </h2>
+                          <p className="text-sm">
+                            The base scenario is a two year corn-soybean
+                            rotation. The default settings for that rotation and
+                            for the environmental conditions are averages for
+                            the county you chose from the clickable map. If
+                            desired, you may adjust some or all of the default
+                            settings to more accurately represent the cropping
+                            system and area you are interested in.
+                          </p>
+                          <ul className="list-disc px-16 text-sm">
+                            <li>
+                              Chose to have the data presented in either Metric
+                              or Imperial units by clicking the appropriate
+                              button at the bottom of the page.
+                            </li>
+                            <li>
+                              Adjust some or all of the default baseline
+                              scenario settings for:
+                              <ul className="list-disc px-16">
+                                <li>Crop (use drop down arrows)</li>
+                                <li>Yield (enter new number)</li>
+                                <li>Tillage (use drop down arrow)</li>
+                                <li>Fertilizer (enter new number)</li>
+                                <li>
+                                  Environmental Conditions (enter new data)
+                                </li>
+                              </ul>
+                            </li>
+                            <li>
+                              If needed, &quot;Remove&quot; or &quot;Add another
+                              year to the rotation&quot; by clicking the
+                              appropriate buttons and then changing the default
+                              settings as desired.
+                            </li>
+                            <li>
+                              The greenhouse gas cost is represented in a graph
+                              (top of page) and in a table (right side of the
+                              page). Click on the &quot;i&quot; to learn about
+                              what the data means.
+                            </li>
                           </ul>
-                        </li>
-                        <li>
-                          If needed, &quot;Remove&quot; or &quot;Add another
-                          year to the rotation&quot; by clicking the appropriate
-                          buttons and then changing the default settings as
-                          desired.
-                        </li>
-                        <li>
-                          The greenhouse gas cost is represented in a graph (top
-                          of page) and in a table (right side of the page).
-                          Click on the &quot;i&quot; to learn about what the
-                          data means.
-                        </li>
-                      </ul>
-                      <h2 className="font-bold">
-                        How do other cropping systems compare to this cropland?
-                      </h2>
-                      <p className="text-sm">
-                        The graph you created above is the &quot;base
-                        scenario&quot;. To compare one or more cropping systems
-                        to the &quot;base scenario&quot;:
-                      </p>
-                      <ul className="list-disc px-16 text-sm">
-                        <li>
-                          Click &quot;Add scenario&quot; and a new scenario will
-                          appear below the &quot;base scenario&quot;.
-                        </li>
-                        <li>
-                          Adjust the default settings and delete/add years to
-                          the rotation as desired.
-                        </li>
-                      </ul>
-                      <p className="text-sm">
-                        The &quot;Total&quot; bars on the graph shows the total
-                        greenhouse gas cost for the scenario. If the new
-                        scenario has a lower &quot;Total&quot; it means that the
-                        new cropping scenario is better for the environment than
-                        the base scenario: it has a lower greenhouse gas cost. A
-                        higher &quot;Total&quot; bar means the new cropping
-                        scenario has a higher greenhouse gas cost (worse for the
-                        environment)
-                      </p>
-                    </ModalBody>
-                    <ModalFooter>
-                      <Button color="primary" onPress={onClose}>
-                        Close
-                      </Button>
-                    </ModalFooter>
-                  </>
-                )}
-              </ModalContent>
-            </Modal>
-          </div>
-          <RadioGroup
-            className="p-2"
-            label="Select your unit system"
-            color="secondary"
-            orientation="horizontal"
-            onValueChange={handle_unit_system_change}
-            defaultValue={unit_system}
-          >
-            <Radio value="imperial">imperial</Radio>
-            <Radio value="metric">metric</Radio>
-          </RadioGroup>
-        </div>
-        <div className="flex flex-row flex-wrap">
-          <div>
-            <CountyParameters
-              county={county}
-              unit_system={units}
-              updater={county_updater}
-            />
-          </div>
-          <div className="w-1/2">
-            <ResultChart
-              results={results}
-              unit_system={units}
-              colors={colors}
-            />
-          </div>
-        </div>
-        <Button onClick={addScenario} className="m-8 ml-4" color="secondary">
-          Add a Scenario
-        </Button>
-        <div>
-          {scenarios.map((scenario, index) => {
-            return (
-              <div
-                className="first:pt-0 pt-12 flex flex-wrap gap-2"
-                key={`scenario-${index}`}
+                          <h2 className="font-bold">
+                            How do other cropping systems compare to this
+                            cropland?
+                          </h2>
+                          <p className="text-sm">
+                            The graph you created above is the &quot;base
+                            scenario&quot;. To compare one or more cropping
+                            systems to the &quot;base scenario&quot;:
+                          </p>
+                          <ul className="list-disc px-16 text-sm">
+                            <li>
+                              Click &quot;Add scenario&quot; and a new scenario
+                              will appear below the &quot;base scenario&quot;.
+                            </li>
+                            <li>
+                              Adjust the default settings and delete/add years
+                              to the rotation as desired.
+                            </li>
+                          </ul>
+                          <p className="text-sm">
+                            The &quot;Total&quot; bars on the graph shows the
+                            total greenhouse gas cost for the scenario. If the
+                            new scenario has a lower &quot;Total&quot; it means
+                            that the new cropping scenario is better for the
+                            environment than the base scenario: it has a lower
+                            greenhouse gas cost. A higher &quot;Total&quot; bar
+                            means the new cropping scenario has a higher
+                            greenhouse gas cost (worse for the environment)
+                          </p>
+                        </ModalBody>
+                        <ModalFooter>
+                          <Button color="primary" onPress={onClose}>
+                            Close
+                          </Button>
+                        </ModalFooter>
+                      </>
+                    )}
+                  </ModalContent>
+                </Modal>
+              </div>
+              <RadioGroup
+                className="p-2"
+                label="Select your unit system"
+                color="secondary"
+                orientation="horizontal"
+                onValueChange={handle_unit_system_change}
+                defaultValue={unit_system}
               >
-                <RotationTable
-                  key={scenario.id}
-                  scenario={scenario}
-                  crop_name_updater={(rotation: number, value: crop) =>
-                    updateCropName(scenario.id, rotation, value)
-                  }
-                  crop_yield_updater={(rotation: number, value: string) =>
-                    updateCropYield(scenario.id, rotation, value)
-                  }
-                  tillage_updater={(rotation: number, value: tillage) =>
-                    updateTilleage(scenario.id, rotation, value)
-                  }
-                  nitrogen_updater={(rotation: number, value: string) =>
-                    updateNitrogen(scenario.id, rotation, value)
-                  }
-                  add_rotation={addRotation}
-                  delete_rotation={(rotation_id: string) =>
-                    delete_rotation(scenario.id, rotation_id)
-                  }
-                  unit_system={stringToUnitSystemType(unit_system)}
-                  ok_to_delete={scenarios.length > 1}
-                />
-                <ResultTable
-                  results={results[index].results}
+                <Radio value="imperial">imperial</Radio>
+                <Radio value="metric">metric</Radio>
+              </RadioGroup>
+            </div>
+            <div className="flex flex-row flex-wrap dark:bg-slate-900 dark:text-white bg-white text-slate-900">
+              <div>
+                <CountyParameters
+                  county={county}
                   unit_system={units}
+                  updater={county_updater}
                 />
               </div>
-            );
-          })}
+              <div className="w-1/2">
+                <ResultChart
+                  results={results}
+                  unit_system={units}
+                  colors={colors}
+                />
+              </div>
+            </div>
+            <Button
+              onClick={addScenario}
+              className="m-8 ml-4"
+              color="secondary"
+            >
+              Add a Scenario
+            </Button>
+            <div>
+              {scenarios.map((scenario, index) => {
+                return (
+                  <div
+                    className="first:pt-0 pt-12 flex flex-wrap gap-2"
+                    key={`scenario-${index}`}
+                  >
+                    <RotationTable
+                      key={scenario.id}
+                      scenario={scenario}
+                      crop_name_updater={(rotation: number, value: crop) =>
+                        updateCropName(scenario.id, rotation, value)
+                      }
+                      crop_yield_updater={(rotation: number, value: string) =>
+                        updateCropYield(scenario.id, rotation, value)
+                      }
+                      tillage_updater={(rotation: number, value: tillage) =>
+                        updateTilleage(scenario.id, rotation, value)
+                      }
+                      nitrogen_updater={(rotation: number, value: string) =>
+                        updateNitrogen(scenario.id, rotation, value)
+                      }
+                      add_rotation={addRotation}
+                      delete_rotation={(rotation_id: string) =>
+                        delete_rotation(scenario.id, rotation_id)
+                      }
+                      unit_system={stringToUnitSystemType(unit_system)}
+                      ok_to_delete={scenarios.length > 1}
+                    />
+                    <ResultTable
+                      results={results[index].results}
+                      unit_system={units}
+                    />
+                  </div>
+                );
+              })}
+            </div>
+          </section>
         </div>
-      </section>
+      </NextUIProvider>
     </div>
   );
 }

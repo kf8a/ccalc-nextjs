@@ -1,10 +1,11 @@
 "use strict";
 import React from "react";
 import MapComponent from "@/components/map";
+import { NextUIProvider } from "@nextui-org/react";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between py-12 px-36">
+    <div className="dark dark:bg-slate-900 text-slate-900 dark:text-white flex min-h-screen flex-col items-center justify-between py-12 px-36">
       <p>
         This calculator was created to help farmers, extension educators,
         agencies, policymakers, and others learn about greenhouse gas emissions
@@ -53,6 +54,6 @@ export default function Home() {
         Click on your county of interest below to begin!
       </p>
       <MapComponent />
-    </main>
+    </div>
   );
 }

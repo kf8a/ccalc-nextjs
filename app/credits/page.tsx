@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Credits(props: any) {
   return (
-    <main className="py-12 px-36">
+    <div className="py-12 px-36 dark:bg-slate-900 dark:text-white bg-white text-slate-800">
       <h1 className="py-4 text-lg bold">Credits</h1>
       <p>
         A detailed description of the calculator can be found in McSwiney et al.
@@ -31,6 +31,6 @@ export default function Credits(props: any) {
           Back
         </Link>
       </p>
-    </main>
+    </div>
   );
 }

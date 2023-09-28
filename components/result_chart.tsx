@@ -99,7 +99,7 @@ export default function ResultChart(props: {
   let data = convertArray(props.results, unit_system);
 
   return (
-    <div className="p-8">
+    <div className="p-8 dark:bg-slate-900 dark:text-white bg-white text-slate-900">
       <h4>Annual Average CO2 costs</h4>
       <span>{`${display_unit(unit_system)}/year`}</span>
 

@@ -20,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <main className="bg-white">
+        <main className="dark:bg-slate-900 bg-white text-slate-900 dark:text-white">
           <a href="/">
             <Image
               src="/header.jpg"
@@ -31,7 +31,7 @@ export default function RootLayout({
           </a>
           {children}
         </main>
-        <footer className="relative">
+        <footer className="relative dark:bg-slate-900 bg-white text-slate-900 dark:text-white">
           <div className="flex flex-row items-center justify-center w-full h-24">
             <span className="px-2 w-42">
               <a href="https://canr.msu.edu/">
