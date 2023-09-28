@@ -52,7 +52,7 @@ export async function generateStaticParams(): Promise<CountyData[]> {
   // { state: 'CA', county_name: 'Modoc                         ' },
   let mapped_counties: CountyData[] = rows.map((county: any) => ({
     state: county.state,
-    county_name: county.county_name.trim(),
+    county_name: county.county_name.trim().replace(/ /, "_"),
   }));
 
   return mapped_counties;
