@@ -131,7 +131,6 @@ export function crop_yield_to_imperial(crop_yield: number, crop: crop) {
     case "oats":
       crop_yield = crop_yield / 1.12 / 60;
       break;
-    case "alfalfa":
     case "silage":
     case "switchgrass":
       crop_yield = (crop_yield / 1000) * 0.446;
