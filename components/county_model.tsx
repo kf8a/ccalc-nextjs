@@ -1,7 +1,7 @@
 "use client";
 import { useImmer } from "use-immer";
 import { useState } from "react";
-import { data_info, tillage, crop } from "@/lib/model";
+import { data_info, tillage, crop, scenario_info } from "@/lib/model";
 import { stringToUnitSystemType } from "@/lib/units";
 import {
   Modal,
@@ -30,6 +30,7 @@ import {
   round,
 } from "@/lib/units";
 import ResultChart from "./result_chart";
+import { title } from "process";
 
 function normalize(value: string) {
   let my_value = parseFloat(value);
@@ -140,20 +141,15 @@ export default function CountyModel(props: {
 
   function addScenario() {
     setScenarios((draft) => {
-      draft.push({
+      let rotations = draft[0].rotations;
+      let new_scenario: scenario_info = {
         title: "Scenario " + draft.length,
         id: draft.length,
         color: getRandomColor(),
-        rotations: [
-          {
-            year: 0,
-            crop_name: "corn",
-            crop_yield: 148,
-            tillage: "conventional",
-            nitrogen: 142,
-          },
-        ],
-      });
+        rotations: rotations,
+      };
+
+      draft.push(new_scenario);
     });
   }
 

@@ -9,3 +9,5 @@
 - [x] finalize layout
 - [x] add titles for new scenarios
 - [x] add intro page
+- [ ] clone last scenario
+- [x] add total to graph
