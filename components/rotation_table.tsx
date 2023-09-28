@@ -41,6 +41,7 @@ export default function RotationTable(props: {
   unit_system: unit_system_type;
   add_rotation: any;
   delete_rotation: any;
+  ok_to_delete: boolean;
 }) {
   const rows = props.scenario.rotations;
 
@@ -180,14 +181,18 @@ export default function RotationTable(props: {
               <TableCell>{renderCell(item, "tillage", item.year)}</TableCell>
               <TableCell>{renderCell(item, "nitrogen", item.year)}</TableCell>
               <TableCell>
-                <Button
-                  onClick={(e) =>
-                    props.delete_rotation(props.scenario.id, item.year, e)
-                  }
-                  color="danger"
-                >
-                  <TrashIcon className="w-4 h-4" />
-                </Button>
+                {props.scenario.rotations.length > 1 || props.ok_to_delete ? (
+                  <Button
+                    onClick={(e) =>
+                      props.delete_rotation(props.scenario.id, item.year, e)
+                    }
+                    color="danger"
+                  >
+                    <TrashIcon className="w-4 h-4" />
+                  </Button>
+                ) : (
+                  " "
+                )}
               </TableCell>
             </TableRow>
           ))}

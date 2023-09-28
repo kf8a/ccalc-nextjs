@@ -12,6 +12,7 @@ export default function Scenario(props: {
   add_rotation: any;
   delete_rotation: any;
   scenario: any;
+  ok_to_run: boolean;
   unit_system: unit_system_type;
 }) {
   function updateCropName(rotation: number, key: string) {
@@ -41,6 +42,7 @@ export default function Scenario(props: {
       add_rotation={props.add_rotation}
       delete_rotation={props.delete_rotation}
       unit_system={props.unit_system}
+      ok_to_delete={props.ok_to_delete}
     />
   );
 }

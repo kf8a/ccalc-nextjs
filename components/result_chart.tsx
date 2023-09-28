@@ -88,15 +88,6 @@ function calculateTotal(scenarioObjects: ScenarioObject[]): ScenarioObject[] {
   return [...scenarioObjects, total as ScenarioObject];
 }
 
-function getRandomColor() {
-  var letters = "0123456789ABCDEF";
-  var color = "#";
-  for (var i = 0; i < 6; i++) {
-    color += letters[Math.floor(Math.random() * 16)];
-  }
-  return color;
-}
-
 // const keys = ["rotation_0", "rotation_1"];
 export default function ResultChart(props: {
   results: scenario_result_type[];
@@ -122,6 +113,7 @@ export default function ResultChart(props: {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
+          <ReferenceLine y={0} stroke="black" strokeWidth={2} />
           <Legend />
           {key_values.map((key, index) => (
             <Bar key={key} dataKey={key} fill={props.colors[index]} />

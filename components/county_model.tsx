@@ -102,7 +102,11 @@ export default function CountyModel(props: {
     value: tillage
   ) {
     setScenarios((draft) => {
+      ``;
+      console.log(scenario_id);
       const index = draft.findIndex((scenario) => scenario.id === scenario_id);
+      console.log(index);
+      console.log(draft.length);
       const current_scenario = draft[index];
       const current_rotation = current_scenario.rotations[rotation];
       // @ts-ignore
@@ -253,6 +257,9 @@ export default function CountyModel(props: {
     setScenarios((draft) => {
       let index = draft.findIndex((scenario) => scenario.id === scenario_id);
       const current_scenario = draft[index];
+      if (draft.length === 1 && current_scenario.rotations.length === 1) {
+        return;
+      }
       current_scenario.rotations.splice(rotation, 1);
       if (current_scenario.rotations.length === 0) {
         draft.splice(index, 1);
@@ -278,8 +285,8 @@ export default function CountyModel(props: {
     <div>
       <section className="p-4">
         <div className="flex flex-row-reverse gap-5 ">
-          <>
-            <Button onPress={onOpen} color="secondary">
+          <div className="mt-5 px-8">
+            <Button onPress={onOpen} color="success">
               Instructions
             </Button>
             <Modal isOpen={isOpen} size="3xl" onOpenChange={onOpenChange}>
@@ -352,13 +359,13 @@ export default function CountyModel(props: {
                         </li>
                       </ul>
                       <p className="text-sm">
-                        The number next to each graph is the greenhouse gas cost
-                        difference between that scenario and the &quot;base
-                        scenario&quot;. A green (negative) number means that the
+                        The &quot;Total&quot; bars on the graph shows the total
+                        greenhouse gas cost for the scenario. If the new
+                        scenario has a lower &quot;Total&quot; it means that the
                         new cropping scenario is better for the environment than
                         the base scenario: it has a lower greenhouse gas cost. A
-                        red (positive) number means the new cropping scenario
-                        has a higher greenhouse gas cost (worse for the
+                        higher &quot;Total&quot; bar means the new cropping
+                        scenario has a higher greenhouse gas cost (worse for the
                         environment)
                       </p>
                     </ModalBody>
@@ -371,7 +378,7 @@ export default function CountyModel(props: {
                 )}
               </ModalContent>
             </Modal>
-          </>
+          </div>
           <RadioGroup
             className="p-2"
             label="Select your unit system"
@@ -408,6 +415,7 @@ export default function CountyModel(props: {
                 state={props.my_state}
                 county_name={props.county_name}
                 scenario={scenario}
+                ok_to_delete={scenarios.length > 1}
                 unit_system={stringToUnitSystemType(unit_system)}
                 crop_name_updater={updateCropName}
                 crop_yield_updater={updateCropYield}

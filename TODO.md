@@ -12,4 +12,5 @@
 - [x] clone first scenario
 - [x] add total to graph
 - [ ] show scenarios in reverse order
-- [ ] deal with counties with spaces in their names
+- [x] deal with counties with spaces in their names
+- [ ] get sharp images for all logos
