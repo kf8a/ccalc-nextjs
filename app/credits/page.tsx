@@ -6,7 +6,7 @@ export default function Credits(props: any) {
       <h1 className="py-4 text-lg bold">Credits</h1>
       <p>
         A detailed description of the calculator can be found in McSwiney et al.
-        (2010), below. For additional information please contact{" "}
+        (2010), below. For additional information please contact
         <a href="mailto:robertson@kbs.msu.edu"> G.P. Robertson</a>
         or <a href="mailto:pr.grace@qut.edu.au">P. Grace.</a> For technical
         questions please contact
@@ -14,7 +14,7 @@ export default function Credits(props: any) {
       </p>
       <p>
         Created with support from the Electric Power Research Institute, the
-        National Science Foundation's Long-term Ecological Research (LTER)
+        National Science Foundation&apos;s Long-term Ecological Research (LTER)
         Program, and the Michigan State Agricultural Experiment Station. A
         contribution of the
         <a href="http://lter.kbs.msu.edu/"> KBS LTER Program</a>
