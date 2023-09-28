@@ -195,7 +195,7 @@ export default function RotationTable(props: {
           ))}
         </TableBody>
       </Table>
-      <Button className="ml-3 mt-4" color="primary" onPress={addRotation}>
+      <Button className="m-3" color="primary" onPress={addRotation}>
         Extend the Rotation
       </Button>
     </div>

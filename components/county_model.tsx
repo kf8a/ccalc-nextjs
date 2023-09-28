@@ -527,38 +527,43 @@ export default function CountyModel(props: {
         <Button onClick={addScenario} className="m-8 ml-4" color="secondary">
           Add a Scenario
         </Button>
-        {scenarios.map((scenario, index) => {
-          return (
-            <div className="flex flex-wrap gap-2" key={`scenario-${index}`}>
-              <RotationTable
-                key={scenario.id}
-                scenario={scenario}
-                crop_name_updater={(rotation: number, value: crop) =>
-                  updateCropName(scenario.id, rotation, value)
-                }
-                crop_yield_updater={(rotation: number, value: string) =>
-                  updateCropYield(scenario.id, rotation, value)
-                }
-                tillage_updater={(rotation: number, value: tillage) =>
-                  updateTilleage(scenario.id, rotation, value)
-                }
-                nitrogen_updater={(rotation: number, value: string) =>
-                  updateNitrogen(scenario.id, rotation, value)
-                }
-                add_rotation={addRotation}
-                delete_rotation={(rotation_id: string) =>
-                  delete_rotation(scenario.id, rotation_id)
-                }
-                unit_system={stringToUnitSystemType(unit_system)}
-                ok_to_delete={scenarios.length > 1}
-              />
-              <ResultTable
-                results={results[index].results}
-                unit_system={units}
-              />
-            </div>
-          );
-        })}
+        <div>
+          {scenarios.map((scenario, index) => {
+            return (
+              <div
+                className="first:pt-0 pt-12 flex flex-wrap gap-2"
+                key={`scenario-${index}`}
+              >
+                <RotationTable
+                  key={scenario.id}
+                  scenario={scenario}
+                  crop_name_updater={(rotation: number, value: crop) =>
+                    updateCropName(scenario.id, rotation, value)
+                  }
+                  crop_yield_updater={(rotation: number, value: string) =>
+                    updateCropYield(scenario.id, rotation, value)
+                  }
+                  tillage_updater={(rotation: number, value: tillage) =>
+                    updateTilleage(scenario.id, rotation, value)
+                  }
+                  nitrogen_updater={(rotation: number, value: string) =>
+                    updateNitrogen(scenario.id, rotation, value)
+                  }
+                  add_rotation={addRotation}
+                  delete_rotation={(rotation_id: string) =>
+                    delete_rotation(scenario.id, rotation_id)
+                  }
+                  unit_system={stringToUnitSystemType(unit_system)}
+                  ok_to_delete={scenarios.length > 1}
+                />
+                <ResultTable
+                  results={results[index].results}
+                  unit_system={units}
+                />
+              </div>
+            );
+          })}
+        </div>
       </section>
     </div>
   );
