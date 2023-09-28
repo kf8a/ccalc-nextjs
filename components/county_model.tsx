@@ -268,7 +268,7 @@ export default function CountyModel(props: {
 
       // draft[0].title = "Scenario " + draft.length;
 
-      draft.push(new_scenario);
+      draft.unshift(new_scenario);
     });
   }
 
@@ -530,6 +530,9 @@ export default function CountyModel(props: {
             />
           </div>
         </div>
+        <Button onClick={addScenario} className="m-8 ml-4" color="secondary">
+          Add a Scenario
+        </Button>
         {scenarios.map((scenario, index) => {
           return (
             <div className="flex flex-wrap gap-2" key={`scenario-${index}`}>
@@ -562,9 +565,6 @@ export default function CountyModel(props: {
             </div>
           );
         })}
-        <Button onClick={addScenario} className="mt-8 ml-4" color="secondary">
-          Add a Scenario
-        </Button>
       </section>
     </div>
   );
