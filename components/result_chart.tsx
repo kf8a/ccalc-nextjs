@@ -82,7 +82,7 @@ function calculateTotal(scenarioObjects: ScenarioObject[]): ScenarioObject[] {
     for (const obj of scenarioObjects) {
       sum += obj[scenario];
     }
-    total[scenario] = sum;
+    total[scenario] = round(sum, 2);
   }
 
   return [...scenarioObjects, total as ScenarioObject];
