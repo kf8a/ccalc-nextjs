@@ -111,7 +111,6 @@ export function crop_yield_to_metric(crop_yield: number, crop: crop): number {
     case "oats":
       crop_yield = crop_yield * 60 * 1.12;
       break;
-    case "alfalfa":
     case "silage":
     case "switchgrass":
       crop_yield = (crop_yield * 1000) / 0.446;
