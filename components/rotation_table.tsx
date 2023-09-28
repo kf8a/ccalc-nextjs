@@ -32,7 +32,6 @@ const table_columns = [
 const tillage = ["conventional", "reduced", "no-till"];
 
 export default function RotationTable(props: {
-  className: string;
   scenario: scenario_info;
   crop_name_updater: any;
   crop_yield_updater: any;
@@ -137,8 +136,8 @@ export default function RotationTable(props: {
   const fertilizer_units = props.unit_system === "imperial" ? "lb/ac" : "kg/ha";
 
   return (
-    <div className={props.className}>
-      <h4 className="text-lg">{`Crop Rotation (${props.scenario.title})`}</h4>
+    <div className="">
+      <h4 className="text-lg">{`${props.scenario.title} (Crop Rotation)`}</h4>
       <Table aria-label="rotations table">
         <TableHeader>
           <TableColumn>Year</TableColumn>
@@ -171,7 +170,7 @@ export default function RotationTable(props: {
         </TableHeader>
         <TableBody>
           {rows.map((item) => (
-            <TableRow key={item.year}>
+            <TableRow key={`${props.scenario.id}_${item.id}`}>
               <TableCell>{renderCell(item, "year", item.year)}</TableCell>
               <TableCell>{renderCell(item, "crop_name", item.year)}</TableCell>
               <TableCell>{renderCell(item, "crop_yield", item.year)}</TableCell>
@@ -183,9 +182,7 @@ export default function RotationTable(props: {
               <TableCell>
                 {props.scenario.rotations.length > 1 || props.ok_to_delete ? (
                   <Button
-                    onClick={(e) =>
-                      props.delete_rotation(props.scenario.id, item.year, e)
-                    }
+                    onClick={(e) => props.delete_rotation(item.id, e)}
                     color="danger"
                   >
                     <TrashIcon className="w-4 h-4" />

@@ -32,18 +32,18 @@ export default function RootLayout({
         </main>
         <footer>
           <div className="flex flex-row items-center justify-center w-full h-24">
-            <span className="w-40">
+            <span className="px-2 w-42">
               <a href="https://canr.msu.edu/">
                 <Image
                   alt="MSU Ag Experiment Station logo and link"
                   width={40}
-                  height={36}
+                  height={32}
                   src="/MAES.gif"
                   className="w-40"
                 />
               </a>
             </span>
-            <span className="w-40">
+            <span className="w-40 px-2">
               <a
                 href="https://seekvectorlogo.com/electric-power-research-institute-epri-vector-logo-svg/"
                 target="_blank"
@@ -54,18 +54,18 @@ export default function RootLayout({
                 />
               </a>
             </span>
-            <span className="w-40">
+            <span className="w-24 px-2">
               <a href="https://www.nsf.gov/">
                 <Image
                   alt="nsf logo and link"
-                  width={40}
-                  height={36}
-                  src="/NSF_Logo_Lockup_Stacked_Low_Res.png"
-                  className="w-40"
+                  width={16}
+                  height={16}
+                  src="/NSF.svg"
+                  className="w-16"
                 />
               </a>
             </span>
-            <span className="w-20">
+            <span className="w-20 px-2 ">
               <a href="https://cleanet.org/clean/about/selected_by_CLEAN">
                 <Image
                   alt="clean net logo and link"

@@ -63,7 +63,6 @@ export default function Page({
 }: {
   params: { state: string; county_name: string };
 }) {
-  console.log(params);
   const state = params.state;
   const county_name = params.county_name;
 

@@ -1,8 +1,16 @@
 "use client";
 import { useImmer } from "use-immer";
 import { useState } from "react";
-import { data_info, tillage, crop, scenario_info } from "@/lib/model";
+import {
+  data_info,
+  tillage,
+  crop,
+  scenario_info,
+  rotation_info,
+} from "@/lib/model";
 import { stringToUnitSystemType } from "@/lib/units";
+import RotationTable from "./rotation_table";
+import { nanoid } from "nanoid";
 import {
   Modal,
   ModalContent,
@@ -67,7 +75,7 @@ export default function CountyModel(props: {
   });
 
   function updateCropName(
-    scenario_id: number,
+    scenario_id: string,
     rotation: number,
     value: Selection
   ) {
@@ -83,7 +91,7 @@ export default function CountyModel(props: {
   }
 
   function updateCropYield(
-    scenario_id: number,
+    scenario_id: string,
     rotation: number,
     value: string
   ) {
@@ -96,17 +104,13 @@ export default function CountyModel(props: {
     });
   }
 
-  function updateTileage(
-    scenario_id: number,
+  function updateTilleage(
+    scenario_id: string,
     rotation: number,
     value: tillage
   ) {
     setScenarios((draft) => {
-      ``;
-      console.log(scenario_id);
-      const index = draft.findIndex((scenario) => scenario.id === scenario_id);
-      console.log(index);
-      console.log(draft.length);
+      let index = draft.findIndex((scenario) => scenario.id === scenario_id);
       const current_scenario = draft[index];
       const current_rotation = current_scenario.rotations[rotation];
       // @ts-ignore
@@ -115,7 +119,7 @@ export default function CountyModel(props: {
   }
 
   function updateNitrogen(
-    scenario_id: number,
+    scenario_id: string,
     rotation: number,
     value: string
   ) {
@@ -129,12 +133,13 @@ export default function CountyModel(props: {
     });
   }
 
-  function addRotation(scenario_id: number) {
+  function addRotation(scenario_id: string) {
     setScenarios((draft) => {
       const index = draft.findIndex((scenario) => scenario.id === scenario_id);
       const current_scenario = draft[index];
       current_scenario.rotations.push({
         year: current_scenario.rotations.length,
+        id: nanoid(),
         crop_name: "corn",
         crop_yield: 148,
         tillage: "conventional",
@@ -143,17 +148,125 @@ export default function CountyModel(props: {
     });
   }
 
+  function random_two_word_title(): string {
+    let nouns: string[] = [
+      "Farm",
+      "Crops",
+      "Harvest",
+      "Tractor",
+      "Soil",
+      "Seed",
+      "Plow",
+      "Livestock",
+      "Barn",
+      "Fertilizer",
+      "Irrigation",
+      "Crop Rotation",
+      "Field",
+      "Crop Yield",
+      "Garden",
+      "Rural",
+      "Agronomist",
+      "Pesticide",
+      "Herbicide",
+      "Organic",
+      "Horticulture",
+      "Farmhouse",
+      "Ranch",
+      "Agricultural Machinery",
+      "Crop Insurance",
+      "Grazing",
+      "Combine Harvester",
+      "Silos",
+      "Manure",
+      "Greenhouse",
+      "Weed Control",
+      "Agricultural Economics",
+      "Agricultural Extension",
+      "Agricultural Research",
+      "Agricultural Science",
+      "Aquaculture",
+      "Beekeeping",
+      "Dairy",
+      "Orchard",
+      "Vineyard",
+      "Agricultural Education",
+      "Cultivation",
+    ];
+    const adjectives: string[] = [
+      "Fertile",
+      "Sustainable",
+      "Organic",
+      "Rural",
+      "Aquatic",
+      "Bountiful",
+      "Green",
+      "Harvested",
+      "Healthy",
+      "Natural",
+      "Productive",
+      "Plentiful",
+      "Tasty",
+      "Fresh",
+      "Nurtured",
+      "Rich",
+      "Lush",
+      "Nutrient-rich",
+      "Crop-ready",
+      "Vibrant",
+      "Blooming",
+      "Fragrant",
+      "Pruned",
+      "Pollinated",
+      "Tropical",
+      "Abundant",
+      "Bucolic",
+      "Sustainable",
+      "Pesticide-free",
+      "Botanical",
+      "Rustic",
+      "Fishing",
+      "Flourishing",
+      "Mature",
+      "Verdant",
+      "Seasonal",
+      "Garden-fresh",
+      "Juicy",
+      "Sun-kissed",
+      "Balmy",
+      "Aquatic",
+      "Weed-free",
+      "Productive",
+      "Muddy",
+      "Irrigated",
+      "Blossoming",
+      "Nutrient-dense",
+      "Bushy",
+      "Bounteous",
+      "Abloom",
+    ];
+    return (
+      adjectives[Math.floor(Math.random() * adjectives.length)] +
+      " " +
+      nouns[Math.floor(Math.random() * nouns.length)]
+    );
+  }
+
   function addScenario() {
     setScenarios((draft) => {
-      let rotations = draft[0].rotations;
-      let new_scenario: scenario_info = {
-        title: draft[0].title,
-        id: draft.length,
-        color: getRandomColor(),
-        rotations: rotations,
-      };
+      let new_scenario = JSON.parse(JSON.stringify(draft[0]));
+      new_scenario.title = random_two_word_title();
+      new_scenario.id = nanoid();
+      new_scenario.color = getRandomColor();
 
-      draft[0].title = "Scenario " + draft.length;
+      // let new_scenario: scenario_info = {
+      //   title: draft[0].title,
+      //   id: draft.length,
+      //   color: getRandomColor(),
+      //   rotations: rotations,
+      // };
+
+      // draft[0].title = "Scenario " + draft.length;
 
       draft.push(new_scenario);
     });
@@ -253,17 +366,27 @@ export default function CountyModel(props: {
     }
   }
 
-  function delete_rotation(scenario_id: number, rotation: number) {
+  function delete_rotation(scenario_id: string, rotation_id: string) {
     setScenarios((draft) => {
       let index = draft.findIndex((scenario) => scenario.id === scenario_id);
       const current_scenario = draft[index];
       if (draft.length === 1 && current_scenario.rotations.length === 1) {
-        return;
+        return draft;
       }
-      current_scenario.rotations.splice(rotation, 1);
+      let rotation_index = current_scenario.rotations.findIndex((rotation) => {
+        rotation.id === rotation_id;
+      });
+      current_scenario.rotations.splice(rotation_index, 1);
       if (current_scenario.rotations.length === 0) {
         draft.splice(index, 1);
       }
+    });
+  }
+
+  // TODO: maybe this should be deleted
+  function filter_out_rotation(rotations: rotation_info[], id: string) {
+    return rotations.filter((value) => {
+      value.id != id;
     });
   }
 
@@ -410,19 +533,27 @@ export default function CountyModel(props: {
         {scenarios.map((scenario, index) => {
           return (
             <div className="flex flex-wrap gap-2" key={`scenario-${index}`}>
-              <Scenario
-                className="mt-4"
-                state={props.my_state}
-                county_name={props.county_name}
+              <RotationTable
+                key={scenario.id}
                 scenario={scenario}
-                ok_to_delete={scenarios.length > 1}
-                unit_system={stringToUnitSystemType(unit_system)}
-                crop_name_updater={updateCropName}
-                crop_yield_updater={updateCropYield}
-                tillage_updater={updateTileage}
-                nitrogen_updater={updateNitrogen}
+                crop_name_updater={(rotation: number, value: crop) =>
+                  updateCropName(scenario.id, rotation, value)
+                }
+                crop_yield_updater={(rotation: number, value: string) =>
+                  updateCropYield(scenario.id, rotation, value)
+                }
+                tillage_updater={(rotation: number, value: tillage) =>
+                  updateTilleage(scenario.id, rotation, value)
+                }
+                nitrogen_updater={(rotation: number, value: string) =>
+                  updateNitrogen(scenario.id, rotation, value)
+                }
                 add_rotation={addRotation}
-                delete_rotation={delete_rotation}
+                delete_rotation={(rotation_id: string) =>
+                  delete_rotation(scenario.id, rotation_id)
+                }
+                unit_system={stringToUnitSystemType(unit_system)}
+                ok_to_delete={scenarios.length > 1}
               />
               <ResultTable
                 results={results[index].results}

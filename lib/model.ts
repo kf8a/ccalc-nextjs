@@ -1,3 +1,4 @@
+import { nanoid } from "nanoid";
 export interface County {
   id: number;
   name: string;
@@ -23,6 +24,7 @@ export type unit_system_type = "imperial" | "metric";
 export type tillage = "conventional" | "reduced" | "no-till";
 
 export type rotation_info = {
+  id: string;
   year: number;
   crop_name: crop;
   crop_yield: number;
@@ -31,7 +33,7 @@ export type rotation_info = {
 };
 
 export type scenario_info = {
-  id: number;
+  id: string;
   title: string;
   color: string;
   rotations: Array<rotation_info>;
@@ -97,11 +99,12 @@ export const initial_model: data_info = {
   },
   scenarios: [
     {
-      id: 0,
+      id: nanoid(),
       title: "Base Scenario",
       color: "#000000",
       rotations: [
         {
+          id: nanoid(),
           year: 0,
           crop_name: "corn",
           crop_yield: 148,
@@ -110,6 +113,7 @@ export const initial_model: data_info = {
         },
         {
           year: 1,
+          id: nanoid(),
           crop_name: "soybean",
           crop_yield: 38.3,
           tillage: "conventional",

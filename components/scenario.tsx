@@ -12,7 +12,7 @@ export default function Scenario(props: {
   add_rotation: any;
   delete_rotation: any;
   scenario: any;
-  ok_to_run: boolean;
+  ok_to_delete: boolean;
   unit_system: unit_system_type;
 }) {
   function updateCropName(rotation: number, key: string) {
@@ -23,8 +23,8 @@ export default function Scenario(props: {
     props.crop_yield_updater(props.scenario.id, rotation, value);
   }
 
-  function updateTileage(rotation: number, key: string) {
-    props.tillage_updater(props.scenario.id, rotation, key);
+  function updateTilleage(rotation: number, key: string) {
+    props.tillage_updater(rotation, key);
   }
 
   function updateNitrogen(rotation: number, value: string) {
@@ -33,11 +33,10 @@ export default function Scenario(props: {
 
   return (
     <RotationTable
-      className={props.className}
       scenario={props.scenario}
       crop_name_updater={updateCropName}
       crop_yield_updater={updateCropYield}
-      tillage_updater={updateTileage}
+      tillage_updater={updateTilleage}
       nitrogen_updater={updateNitrogen}
       add_rotation={props.add_rotation}
       delete_rotation={props.delete_rotation}

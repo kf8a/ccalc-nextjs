@@ -14,3 +14,5 @@
 - [ ] show scenarios in reverse order
 - [x] deal with counties with spaces in their names
 - [ ] get sharp images for all logos
+
+create a second scenario, delete the top one and then change a value and it will crash
