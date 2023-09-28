@@ -74,11 +74,7 @@ export default function CountyModel(props: {
     return result;
   });
 
-  function updateCropName(
-    scenario_id: string,
-    rotation: number,
-    value: Selection
-  ) {
+  function updateCropName(scenario_id: string, rotation: number, value: crop) {
     setScenarios((draft) => {
       const index = draft.findIndex((scenario) => scenario.id === scenario_id);
       const current_scenario = draft[index];
