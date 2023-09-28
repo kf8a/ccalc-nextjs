@@ -21,7 +21,6 @@ import {
   useDisclosure,
 } from "@nextui-org/react";
 
-import Scenario from "./scenario";
 import { RadioGroup, Radio } from "@nextui-org/react";
 import { socrates } from "@/lib/socrates";
 import CountyParameters from "./county_parameters";
@@ -38,7 +37,6 @@ import {
   round,
 } from "@/lib/units";
 import ResultChart from "./result_chart";
-import { title } from "process";
 
 function normalize(value: string) {
   let my_value = parseFloat(value);

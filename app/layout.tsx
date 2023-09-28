@@ -1,4 +1,5 @@
 import "./globals.css";
+import Link from "next/link";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import Image from "next/image";
@@ -30,7 +31,7 @@ export default function RootLayout({
           </a>
           {children}
         </main>
-        <footer>
+        <footer className="relative">
           <div className="flex flex-row items-center justify-center w-full h-24">
             <span className="px-2 w-42">
               <a href="https://canr.msu.edu/">
@@ -75,6 +76,11 @@ export default function RootLayout({
                   className="w-20"
                 />
               </a>
+            </span>
+            <span dir="rtl" className="absolute top-0 start-0 px-4">
+              <Link className="underline" href="/credits">
+                Credits
+              </Link>
             </span>
           </div>
           <div className="flex flex-row items-center justify-center w-full h-12 text-white bg-[#18453B]">
