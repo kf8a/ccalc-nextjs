@@ -34,7 +34,7 @@ const keys = [
 function convertArray(
   inputArray: scenario_result_type[],
   unit_system: unit_system_type
-): any[] {
+): ScenarioObject[] {
   const resultArray: any[] = [];
 
   if (inputArray.length === 0) {
@@ -47,7 +47,8 @@ function convertArray(
     for (let i = 0; i < inputArray.length; i++) {
       newObj[inputArray[i].title] = round(
         display_in_unit_system(
-          inputArray[i].results.reduce((a, b) => a + b[key["name"]], 0) /
+          // @ts-ignore
+          inputArray[i].results.reduce((a: number, b) => a + b[key.name], 0) /
             inputArray[i].results.length,
           unit_system
         ),
@@ -57,8 +58,34 @@ function convertArray(
 
     resultArray.push(newObj);
   }
+  return calculateTotal(resultArray);
+}
 
-  return resultArray;
+interface ScenarioObject {
+  // @ts-ignore
+  name: string;
+  [scenario: string]: number;
+}
+
+function calculateTotal(scenarioObjects: ScenarioObject[]): ScenarioObject[] {
+  // @ts-ignore
+  const total: Partial<ScenarioObject> = {
+    name: "Total",
+  };
+
+  const scenarios = Object.keys(scenarioObjects[0]).filter(
+    (key) => key !== "name"
+  );
+
+  for (const scenario of scenarios) {
+    let sum = 0;
+    for (const obj of scenarioObjects) {
+      sum += obj[scenario];
+    }
+    total[scenario] = sum;
+  }
+
+  return [...scenarioObjects, total as ScenarioObject];
 }
 
 function getRandomColor() {
@@ -79,8 +106,6 @@ export default function ResultChart(props: {
   let key_values = props.results.map((scenario) => scenario.title);
   let unit_system = stringToUnitSystemType(props.unit_system);
   let data = convertArray(props.results, unit_system);
-  console.log(props.results);
-  console.log(data);
 
   return (
     <div className="p-8">

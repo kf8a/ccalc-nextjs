@@ -96,7 +96,7 @@ export default function ResultTable(props: {
               <TableCell className="font-bold">
                 {display_in_unit_system(
                   item.soil_co2_estimate +
-                    item.n2o_n_estimate_percentage +
+                    item.fertilizer_co2_estimate +
                     item.fuel_co2_estimate +
                     item.fertilizer_production,
                   props.unit_system

@@ -72,7 +72,6 @@ export default function CountyModel(props: {
   ) {
     setScenarios((draft) => {
       const index = draft.findIndex((scenario) => scenario.id === scenario_id);
-      console.log(index);
       const current_scenario = draft[index];
       const current_rotation = current_scenario.rotations[rotation];
       // @ts-ignore
@@ -257,8 +256,6 @@ export default function CountyModel(props: {
       let index = draft.findIndex((scenario) => scenario.id === scenario_id);
       const current_scenario = draft[index];
       current_scenario.rotations.splice(rotation, 1);
-      console.log("scenario", draft.length);
-      console.log("rotations", current_scenario.rotations.length);
       if (current_scenario.rotations.length === 0) {
         draft.splice(index, 1);
       }
@@ -326,28 +323,30 @@ export default function CountyModel(props: {
                           </ul>
                         </li>
                         <li>
-                          If needed, "Remove" or "Add another year to the
-                          rotation" by clicking the appropriate buttons and then
-                          changing the default settings as desired.
+                          If needed, &quot;Remove&quot; or &quot;Add another
+                          year to the rotation&quot; by clicking the appropriate
+                          buttons and then changing the default settings as
+                          desired.
                         </li>
                         <li>
                           The greenhouse gas cost is represented in a graph (top
                           of page) and in a table (right side of the page).
-                          Click on the "i" to learn about what the data means.
+                          Click on the &quot;i&quot; to learn about what the
+                          data means.
                         </li>
                       </ul>
                       <h2 className="font-bold">
                         How do other cropping systems compare to this cropland?
                       </h2>
                       <p className="text-sm">
-                        The graph you created above is the "base scenario". To
-                        compare one or more cropping systems to the "base
-                        scenario":
+                        The graph you created above is the &quot;base
+                        scenario&quot;. To compare one or more cropping systems
+                        to the &quot;base scenario&quot;:
                       </p>
                       <ul className="list-disc px-16 text-sm">
                         <li>
-                          Click "Add scenario" and a new scenario will appear
-                          above the "base scenario".
+                          Click &quot;Add scenario&quot; and a new scenario will
+                          appear below the &quot;base scenario&quot;.
                         </li>
                         <li>
                           Adjust the default settings and delete/add years to
@@ -356,12 +355,13 @@ export default function CountyModel(props: {
                       </ul>
                       <p className="text-sm">
                         The number next to each graph is the greenhouse gas cost
-                        difference between that scenario and the "base
-                        scenario". A green (negative) number means that the new
-                        cropping scenario is better for the environment than the
-                        base scenario: it has a lower greenhouse gas cost. A red
-                        (positive) number means the new cropping scenario has a
-                        higher greenhouse gas cost (worse for the environment)
+                        difference between that scenario and the &quot;base
+                        scenario&quot;. A green (negative) number means that the
+                        new cropping scenario is better for the environment than
+                        the base scenario: it has a lower greenhouse gas cost. A
+                        red (positive) number means the new cropping scenario
+                        has a higher greenhouse gas cost (worse for the
+                        environment)
                       </p>
                     </ModalBody>
                     <ModalFooter>
