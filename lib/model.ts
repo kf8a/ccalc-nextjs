@@ -101,7 +101,7 @@ export const initial_model: data_info = {
     {
       id: nanoid(),
       title: "Base Scenario",
-      color: "#000000",
+      color: "#5062f5",
       rotations: [
         {
           id: nanoid(),
