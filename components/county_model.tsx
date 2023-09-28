@@ -143,11 +143,13 @@ export default function CountyModel(props: {
     setScenarios((draft) => {
       let rotations = draft[0].rotations;
       let new_scenario: scenario_info = {
-        title: "Scenario " + draft.length,
+        title: draft[0].title,
         id: draft.length,
         color: getRandomColor(),
         rotations: rotations,
       };
+
+      draft[0].title = "Scenario " + draft.length;
 
       draft.push(new_scenario);
     });
