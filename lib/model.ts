@@ -16,7 +16,6 @@ export type crop =
   | "soybean"
   | "wheat"
   | "oats"
-  | "alfalfa"
   | "silage"
   | "switchgrass";
 
