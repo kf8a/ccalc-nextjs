@@ -136,7 +136,7 @@ export default function RotationTable(props: {
   const fertilizer_units = props.unit_system === "imperial" ? "lb/ac" : "kg/ha";
 
   return (
-    <div className="p-2 dark:bg-slate-900 dark:text-white bg-white text-slate-800 rounded-xl">
+    <div className="pr-2 dark:bg-slate-900 dark:text-white bg-white text-slate-800 rounded-xl">
       <h4 className="text-lg">{`${props.scenario.title} (Crop Rotation)`}</h4>
       <Table aria-label="rotations table">
         <TableHeader>
@@ -174,7 +174,7 @@ export default function RotationTable(props: {
               <TableCell>{renderCell(item, "year", item.year)}</TableCell>
               <TableCell>{renderCell(item, "crop_name", item.year)}</TableCell>
               <TableCell>{renderCell(item, "crop_yield", item.year)}</TableCell>
-              <TableCell>
+              <TableCell className="">
                 {crop_yield_units(props.unit_system, item.crop_name)}
               </TableCell>
               <TableCell>{renderCell(item, "tillage", item.year)}</TableCell>
@@ -184,7 +184,7 @@ export default function RotationTable(props: {
                   <Button
                     className="w-4"
                     onClick={(e) => props.delete_rotation(item.id, e)}
-                    color="danger"
+                    color="warning"
                   >
                     <TrashIcon className="w-4 h-4" />
                   </Button>
