@@ -21,15 +21,25 @@ export default function RootLayout({
   return (
     <html className="" lang="en">
       <body className={inter.className}>
+        <header>
+          <div className="relative">
+            <a href="/">
+              <Image
+                src="/header.jpg"
+                width={4000}
+                height={200}
+                alt="Midwest farm landscape"
+              />
+            </a>
+            <div className="absolute top-8 text-white font-heavy text-2xl start-24">
+              US Cropland Greenhouse Gas Calculator
+            </div>
+            <div className="absolute top-1 text-white font-heavy text-lg start-20">
+              Michigan State University's
+            </div>
+          </div>
+        </header>
         <main className="dark:bg-slate-900 bg-white text-slate-900 dark:text-white">
-          <a href="/">
-            <Image
-              src="/header.jpg"
-              width={4000}
-              height={200}
-              alt="Midwest farm landscape"
-            />
-          </a>
           {children}
         </main>
         <footer className="relative dark:bg-slate-900 bg-white text-slate-900 dark:text-white">

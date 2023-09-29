@@ -106,8 +106,8 @@ export default function CountyParameters(props: {
               type="number"
               value={props.county.precipitation.toString()}
               onValueChange={(e) => props.updater("precipitation", e)}
-            />{" "}
-            {precip_units}
+            />
+            <span className="px-4">{precip_units}</span>
           </div>
           <StyledTooltip
             label="Minimum Temperature"
@@ -118,8 +118,8 @@ export default function CountyParameters(props: {
               type="number"
               value={props.county.t_min.toString()}
               onValueChange={(e) => props.updater("t_min", e)}
-            />{" "}
-            {temperature_units}
+            />
+            <span className="px-4">{temperature_units}</span>
           </div>
           <StyledTooltip
             label="Maximum Temperature"
@@ -130,8 +130,8 @@ export default function CountyParameters(props: {
               type="number"
               value={props.county.t_max.toString()}
               onValueChange={(e) => props.updater("t_max", e)}
-            />{" "}
-            {temperature_units}
+            />
+            <span className="px-4">{temperature_units}</span>
           </div>
           <StyledTooltip
             label="Percent Clay"
@@ -145,7 +145,7 @@ export default function CountyParameters(props: {
               value={props.county.clay.toString()}
               onValueChange={(e) => props.updater("clay", e)}
             />
-            {" % "}
+            <span className="px-4">%</span>
           </div>
           <StyledTooltip
             label="Carbon"
@@ -159,7 +159,7 @@ export default function CountyParameters(props: {
               value={props.county.c_zero.toString()}
               onValueChange={(e) => props.updater("c_zero", e)}
             />
-            {" % "}
+            <span className="px-4">%</span>
           </div>
           <StyledTooltip
             label="Bulk Density"
@@ -174,7 +174,9 @@ export default function CountyParameters(props: {
               value={props.county.bulk_density.toString()}
               onValueChange={(e) => props.updater("bulk_density", e)}
             />
-            {" g/cm^3 "}
+            <span className="px-4">
+              g/cm<sup>3</sup>
+            </span>
           </div>
         </div>
       </CardBody>
