@@ -26,7 +26,7 @@ export default function RootLayout({
             <a href="/">
               <Image
                 src="/header.jpg"
-                width={600}
+                width={2000}
                 height={200}
                 alt="Midwest farm landscape"
               />
