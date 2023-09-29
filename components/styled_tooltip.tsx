@@ -8,6 +8,8 @@ export default function StyledTooltip(props: { label: string; info: string }) {
       {props.label}
       <Tooltip
         delay={500}
+        // @ts-ignore
+        trigger={["focus", "hover"]}
         className="w-60 dark dark:bg-slate-900 dark:text-white bg-white text-slate-800"
         content={props.info}
       >
