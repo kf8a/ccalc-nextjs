@@ -113,7 +113,7 @@ export default function ResultChart(props: {
           <XAxis dataKey="name" />
           <YAxis />
           <Tooltip />
-          <ReferenceLine y={0} stroke="black" strokeWidth={2} />
+          <ReferenceLine y={0} strokeWidth={2} />
           <Legend />
           {key_values.map((key, index) => (
             <Bar key={key} dataKey={key} fill={props.colors[index]} />
