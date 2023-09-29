@@ -104,6 +104,7 @@ export default function CountyParameters(props: {
           <div className="flex flex-row w-40">
             <Input
               type="number"
+              aria-label="Precipitation"
               value={props.county.precipitation.toString()}
               onValueChange={(e) => props.updater("precipitation", e)}
             />
@@ -116,6 +117,7 @@ export default function CountyParameters(props: {
           <div className="flex flex-row w-40">
             <Input
               type="number"
+              aria-label="Minimum Temperature"
               value={props.county.t_min.toString()}
               onValueChange={(e) => props.updater("t_min", e)}
             />
@@ -128,6 +130,7 @@ export default function CountyParameters(props: {
           <div className="flex flex-row w-40">
             <Input
               type="number"
+              aria-label="Maximum Temperature"
               value={props.county.t_max.toString()}
               onValueChange={(e) => props.updater("t_max", e)}
             />
@@ -140,6 +143,7 @@ export default function CountyParameters(props: {
           <div className="flex flex-row w-40">
             <Input
               type="number"
+              aria-label="Percent Clay"
               min={0}
               max={100}
               value={props.county.clay.toString()}
@@ -154,6 +158,7 @@ export default function CountyParameters(props: {
           <div className="flex flex-row w-40">
             <Input
               type="number"
+              aria-label="Percent Carbon"
               min={0}
               max={100}
               value={props.county.c_zero.toString()}
@@ -169,6 +174,7 @@ export default function CountyParameters(props: {
           <div className="flex flex-row w-40">
             <Input
               type="number"
+              aria-label="Bulk Density"
               min={0}
               max={3}
               value={props.county.bulk_density.toString()}

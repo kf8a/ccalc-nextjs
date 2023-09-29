@@ -94,6 +94,7 @@ export default function RotationTable(props: {
         case "crop_yield":
           return (
             <RotationInput
+              label="Crop Yield Input"
               value={getCropYield(item).toString()}
               rotation={index}
               unit_system={props.unit_system}
@@ -103,6 +104,7 @@ export default function RotationTable(props: {
         case "nitrogen":
           return (
             <RotationInput
+              label="Fertilizer Input"
               value={getNitrogen(item).toString()}
               rotation={index}
               unit_system={props.unit_system}
@@ -183,6 +185,7 @@ export default function RotationTable(props: {
                 {props.scenario.rotations.length > 1 || props.ok_to_delete ? (
                   <Button
                     className="w-4"
+                    aria-label={`Delete Rotation for year ${item.year}`}
                     onClick={(e) => props.delete_rotation(item.id, e)}
                     color="warning"
                   >
