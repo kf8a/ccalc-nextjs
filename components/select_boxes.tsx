@@ -65,6 +65,7 @@ function parse(value: string) {
 }
 
 export function RotationInput(props: {
+  label: string;
   updater: any;
   rotation: number;
   value: string;
@@ -79,6 +80,7 @@ export function RotationInput(props: {
     <Input
       className=""
       type="number"
+      aria-label={props.label}
       value={my_value.toString()}
       min={0}
       max={10000}
