@@ -26,15 +26,15 @@ export default function RootLayout({
             <a href="/">
               <Image
                 src="/header.jpg"
-                width={4000}
+                width={600}
                 height={200}
                 alt="Midwest farm landscape"
               />
             </a>
-            <div className="absolute top-8 text-white font-heavy text-2xl start-24">
+            <div className="absolute top-3 sm:top-5 md:top-6 text-sm text-white sm:font-heavy sm:text-base md:text-xl start-8 md:start-24">
               US Cropland Greenhouse Gas Calculator
             </div>
-            <div className="absolute top-1 text-white font-heavy text-lg start-20">
+            <div className="absolute top-0 sm:top-1 text-white font-light md:font-heavy text-xs md:text-base start-6 md:start-20">
               Michigan State University&apos;s
             </div>
           </div>
@@ -46,11 +46,11 @@ export default function RootLayout({
           <div className="flex flex-row items-center justify-center w-full h-24">
             <span className="px-2 w-42">
               <a href="https://canr.msu.edu/">
-                <Image
+                <img
                   alt="MSU Ag Experiment Station logo and link"
                   width={40}
                   height={32}
-                  src="/MAES.gif"
+                  src="/AGBioResearch_Logo_Horiz_PMS_567_Transparent.png"
                   className="w-40"
                 />
               </a>

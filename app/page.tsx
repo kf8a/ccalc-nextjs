@@ -7,7 +7,7 @@ import { ThemeProvider } from "next-themes";
 export default function Home() {
   return (
     <ThemeProvider attribute="class" enableSystem={true}>
-      <div className="dark dark:bg-slate-900 text-slate-900 dark:text-white flex min-h-screen flex-col items-center justify-between py-12 px-36">
+      <div className="dark dark:bg-slate-900 text-slate-900 dark:text-white flex min-h-screen flex-col items-center justify-between py-2 px-4 md:py-12 md:px-36">
         <p>
           This calculator was created to help farmers, extension educators,
           agencies, policymakers, and others learn about greenhouse gas
