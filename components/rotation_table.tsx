@@ -12,12 +12,7 @@ import {
 } from "@nextui-org/react";
 import { PressEvent } from "@react-types/shared";
 import { CropSelect, TillageSelect, RotationInput } from "./select_boxes";
-import {
-  scenario_info,
-  unit_system_type,
-  County,
-  rotation_info,
-} from "@/lib/model";
+import { scenario_info, unit_system_type, rotation_info } from "@/lib/model";
 import StyledTooltip from "./styled_tooltip";
 import { TrashIcon } from "@heroicons/react/24/outline";
 
@@ -115,7 +110,13 @@ export default function RotationTable(props: {
           return item.year;
       }
     },
-    []
+    [
+      props.nitrogen_updater,
+      props.crop_yield_updater,
+      props.unit_system,
+      props.tillage_updater,
+      props.crop_name_updater,
+    ]
   );
 
   function crop_yield_units(unit_system: unit_system_type, crop_name: string) {
