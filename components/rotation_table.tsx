@@ -182,6 +182,7 @@ export default function RotationTable(props: {
               <TableCell>
                 {props.scenario.rotations.length > 1 || props.ok_to_delete ? (
                   <Button
+                    className="w-4"
                     onClick={(e) => props.delete_rotation(item.id, e)}
                     color="danger"
                   >
