@@ -390,7 +390,7 @@ export default function CountyModel(props: {
         <section className="p-4">
           <div className="flex flex-row-reverse gap-5 dark:bg-slate-900 dark:text-white bg-white text-slate-900">
             <div className="mt-5 px-8">
-              <Button onPress={onOpen} color="success">
+              <Button tabIndex={1} onPress={onOpen} color="success">
                 Instructions
               </Button>
               <Modal isOpen={isOpen} size="3xl" onOpenChange={onOpenChange}>
@@ -485,6 +485,7 @@ export default function CountyModel(props: {
               </Modal>
             </div>
             <RadioGroup
+              tabIndex={0}
               className="p-2"
               label="Select your unit system"
               color="secondary"
