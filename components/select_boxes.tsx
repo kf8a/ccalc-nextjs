@@ -83,8 +83,6 @@ export function RotationInput(props: {
       min={0}
       max={10000}
       onValueChange={(value) => props.updater(props.rotation, value)}
-    >
-      {" "}
-    </Input>
+    ></Input>
   );
 }

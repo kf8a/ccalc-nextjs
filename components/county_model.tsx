@@ -519,7 +519,7 @@ export default function CountyModel(props: {
             {scenarios.map((scenario, index) => {
               return (
                 <div
-                  className="first:pt-0 pt-12 flex flex-wrap gap-2"
+                  className="first:pt-0 pt-12 flex flex-wrap gap-2 lg:flex-nowrap"
                   key={`scenario-${index}`}
                 >
                   <RotationTable

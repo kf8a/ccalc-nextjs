@@ -28,7 +28,7 @@ export default function ResultTable(props: {
   const rows = props.results;
   return (
     <div className="dark:bg-slate-900 dark:text-white bg-white text-slate-800 rounded-xl">
-      <h2 className="text-lg p-2">
+      <h2 className="text-lg">
         <StyledTooltip
           label={`Greenhouse gas costs CO2 equivalents ${display_unit(
             props.unit_system
@@ -69,7 +69,7 @@ export default function ResultTable(props: {
           {rows.map((item) => (
             <TableRow key={item.id}>
               <TableCell>{item.id}</TableCell>
-              <TableCell>
+              <TableCell className="py-6">
                 {display_in_unit_system(
                   item.soil_co2_estimate,
                   props.unit_system
@@ -106,7 +106,7 @@ export default function ResultTable(props: {
           ))}
           ;
           <TableRow>
-            <TableCell className="font-bold">Annual Average</TableCell>
+            <TableCell className="font-bold">Average</TableCell>
             <TableCell className="font-bold">
               {display_in_unit_system(
                 rows.reduce((a, b) => a + b.soil_co2_estimate, 0) / rows.length,
