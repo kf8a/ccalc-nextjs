@@ -35,7 +35,7 @@ export default function RootLayout({
               US Cropland Greenhouse Gas Calculator
             </div>
             <div className="absolute top-1 text-white font-heavy text-lg start-20">
-              Michigan State University's
+              Michigan State University&apos;s
             </div>
           </div>
         </header>
