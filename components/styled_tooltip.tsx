@@ -7,6 +7,7 @@ export default function StyledTooltip(props: { label: string; info: string }) {
     <div className="flex flex-row ">
       {props.label}
       <Tooltip
+        delay={500}
         className="w-60 dark dark:bg-slate-900 dark:text-white bg-white text-slate-800"
         content={props.info}
       >
