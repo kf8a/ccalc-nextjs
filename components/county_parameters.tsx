@@ -86,7 +86,7 @@ export default function CountyParameters(props: {
   const precip_units = precipitation_units_in_system(props.unit_system);
 
   https: return (
-    <Card className="m-4 max-w-[600px]">
+    <Card className="max-w-[600px]">
       <CardHeader className="flex gap-3">
         <div className="flex flex-col">
           <p className="text-md font-bold">
