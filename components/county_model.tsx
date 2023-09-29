@@ -2,13 +2,7 @@
 import { useImmer } from "use-immer";
 import { useState } from "react";
 import { ThemeProvider } from "next-themes";
-import {
-  data_info,
-  tillage,
-  crop,
-  scenario_info,
-  rotation_info,
-} from "@/lib/model";
+import { data_info, tillage, crop, rotation_info } from "@/lib/model";
 import { stringToUnitSystemType } from "@/lib/units";
 import RotationTable from "./rotation_table";
 import { nanoid } from "nanoid";
@@ -424,7 +418,7 @@ export default function CountyModel(props: {
                           <li>
                             Chose to have the data presented in either Metric or
                             Imperial units by clicking the appropriate button at
-                            the bottom of the page.
+                            the top of the page.
                           </li>
                           <li>
                             Adjust some or all of the default baseline scenario
@@ -462,7 +456,7 @@ export default function CountyModel(props: {
                         <ul className="list-disc px-16 text-sm">
                           <li>
                             Click &quot;Add scenario&quot; and a new scenario
-                            will appear below the &quot;base scenario&quot;.
+                            will appear above the &quot;base scenario&quot;.
                           </li>
                           <li>
                             Adjust the default settings and delete/add years to
